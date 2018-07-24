@@ -1,0 +1,27 @@
+{
+    "name": "phore/dba-migrations",
+    "description": "database migrations for phore-dba",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Matthias Leuffen",
+            "email": "m@tth.es"
+        }
+    ],
+
+    "require": {
+        "php": ">=7.0",
+        "ext-pcre": "*",
+        "phore/dba": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "Phore\\DbaMigrations\\": "src/"
+        }
+    },
+
+    "require-dev": {
+        "nette/tester": "^2.0"
+    }
+}
