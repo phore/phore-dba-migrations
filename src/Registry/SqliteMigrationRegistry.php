@@ -27,16 +27,16 @@ EOT;
 
     public function ensureInstalled(PhoreDba $dba)
     {
-        echo "\nTrying to create Table";
+        //echo "\nTrying to create Table";
         $dba->query(self::MANGER_CREATE_SQL);
         try {
-            echo "\nLoading Head version";
+            //echo "\nLoading Head version";
             $row = $dba->query("SELECT * FROM ".self::REGISTRY_NAME
                 ." WHERE store_id='HEAD'")->first();
 
         } catch (NoDataException $e) {
             //throw $e;
-            echo "\nCreating registry (INSERT INTO...)";
+            //echo "\nCreating registry (INSERT INTO...)";
             $dba->query("INSERT INTO " . self::REGISTRY_NAME . " (store_id, installed_version) VALUES ('HEAD', '0');");
         }
     }
@@ -49,7 +49,7 @@ EOT;
 
     public function setInstalledVersion(PhoreDba $dba, int $newVersion)
     {
-        echo "\nUpdating version to $newVersion";
+        //echo "\nUpdating version to $newVersion";
         $dba->query("UPDATE " . self::REGISTRY_NAME . " SET installed_version = ? WHERE store_id='HEAD'", [$newVersion]);
     }
 }
