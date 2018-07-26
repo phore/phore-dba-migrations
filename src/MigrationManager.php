@@ -55,16 +55,16 @@ class MigrationManager
         if (count ($migrations) == 0) {
             return;
         }
-        echo "\nInstalled Version: $curInstalledVersion - Target-Version: {$headMigration->getVersion()}";
+        //echo "\nInstalled Version: $curInstalledVersion - Target-Version: {$headMigration->getVersion()}";
         foreach ($migrations as $curMigration) {
 
-            echo "\nRunning migration: ". get_class($curMigration) . "->up()";
+            //echo "\nRunning migration: ". get_class($curMigration) . "->up()";
             if ($curMigration->getVersion() == 0)
                 throw new \InvalidArgumentException("Version number must be bigger than '0'");
             $curMigration->up($dba);
         }
 
-        echo "\nMigration done. Writing version.";
+        //echo "\nMigration done. Writing version.";
         $this->migrationRegistry->setInstalledVersion($dba, $curMigration->getVersion());
     }
 
